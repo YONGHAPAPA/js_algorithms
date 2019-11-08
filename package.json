@@ -1,0 +1,19 @@
+{
+  "name": "js_algorithms",
+  "version": "1.0.0",
+  "description": "javascript algorithms self-tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YONGHAPAPA/js_algorithms.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YONGHAPAPA/js_algorithms/issues"
+  },
+  "homepage": "https://github.com/YONGHAPAPA/js_algorithms#readme"
+}
