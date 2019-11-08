@@ -16,10 +16,27 @@ class LinkedList {
             this.tail = node;
             return this;
         } else {
-            node.next = this.head;
+
+            //console.log(this.head.next === this.tail);
+            node.next = this.head; //the first node.next === this.tail
             this.head = node;
             return this;
         }
+    }
+
+
+    append(value){
+        //console.log(this.head === this.tail);
+        const node = new LinkedNode(value);
+
+        if(!this.head){
+            this.head = node;
+            this.tail = node;
+            return this;
+        } 
+        
+        this.tail.next = node; //this.head.next & this.tail.next have same reference. (this this.tail.next means the first head.next)
+        this.tail = node;  //the only first head.next & this.tail.next 
     }
 
     reverse(){

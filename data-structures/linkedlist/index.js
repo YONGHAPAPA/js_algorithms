@@ -3,31 +3,20 @@ const LinkedList = require('./LinkedList');
 
 let list = new LinkedList();
 
-for(i=3; i>=0; i--){
-    //console.log(i);
-    list.prepend(i);
+for(i=0; i>=-2; i--){
+    //list.prepend(i);
 }
 
-console.log(list.toArray());
-console.log(list.tail);
+//console.log(list.toArray());
+//console.log(list.head === list.tail);
 
-list.reverse();
+for(i=0;i<=3;i++){
+    list.append(i);
+}
+//console.log(list.toArray());
 
-console.log(list.toArray());
-console.log(list.tail);
-
-//console.log(list.toArray())
+//console.log(list.tail);
 //list.reverse();
-//console.log(list);
 
-/*
-list.prepend(0);
-list.prepend(1);
-list.prepend(2);
 
-console.log(list.toArray());
 
-list.reverse();
-
-console.log(list.toArray());
-*/
