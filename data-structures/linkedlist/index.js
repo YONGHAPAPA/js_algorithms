@@ -1,9 +1,10 @@
 //import LinkedList from './LinkedList';
-const LinkedList = require('./LinkedList');
+const LinkedList = require('./b01/LinkedList');
 
-let list = new LinkedList();
+const linkedList = new LinkedList();
 
 
+<<<<<<< HEAD
 /*
 for(let i=0; i>=-5; i--){
     list.prepend(i);
@@ -69,6 +70,23 @@ console.log(a);
 console.log(b);
 
 
+
+
+for(i=0; i>-3; i--){
+    //linkedList.prepend(i);
+}
+
+//console.log(linkedList);
+
+
+for(i=0; i<=5; i++){
+    linkedList.append(i);
+}
+
+//linkedList.toString();
+
+linkedList.reverse();
+//linkedList.toString();
 
 
 
