@@ -37,21 +37,21 @@ class LinkedList{
 
 
     reverse(){
-        let currentNode = this.head;
-        let nextNode = null;
-        let prevNode = null;
+       let currNode = this.head;
+       let nextNode = null;
+       let reverseNode = null;
 
-        while(currentNode){
-            nextNode = currentNode.next;
-            currentNode.next = prevNode;
-            //이 시점부터 this.head 는 최종 tail 값이됨.
+       while(currNode){
+            nextNode = currNode.next;
+
+            currNode.next = reverseNode;
+            reverseNode = currNode;
             
-            prevNode = currentNode;
-            currentNode = nextNode;
-        }
-        
-        this.tail = this.head;  
-        this.head = prevNode;
+            currNode = nextNode;
+       }
+
+       this.tail = this.head;
+       this.head = reverseNode;
     }
 
 
