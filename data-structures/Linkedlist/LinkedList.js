@@ -1,5 +1,9 @@
 const LinkedNode = require('./LinkedNode');
 
+function compareVal(a, b){
+    return a - b;
+}
+
 class LinkedList{
     constructor(head, tail){
         this.head = head;
@@ -37,21 +41,42 @@ class LinkedList{
 
 
     reverse(){
-       let currNode = this.head;
-       let nextNode = null;
-       let reverseNode = null;
 
-       while(currNode){
-            nextNode = currNode.next;
+        let currNode, prevNode, nextNode = null;
+        currNode = this.head;
 
-            currNode.next = reverseNode;
-            reverseNode = currNode;
+        while(currNode){
+            nextNode = currNode.next; 
+
+            currNode.next = prevNode; 
+            prevNode = currNode; 
+
+            currNode = nextNode; 
+        }
+
+        this.tail = this.head;
+        this.head = prevNode;
+        return this;
+    }
+
+    find(value=undefined, cb=undefined){
+        if(!this.head){
+            return null;
+        }
+
+        let currNode = this.head;
+        while(currNode){
+            if(cb && cb(currNode.value)){
+                return currNode;
+            }
             
-            currNode = nextNode;
-       }
+            if(value !== undefined && compareVal(value, currNode.value) === 0){
+                return currNode;    
+            }
+            currNode = currNode.next;
+        }
 
-       this.tail = this.head;
-       this.head = reverseNode;
+        return null;
     }
 
 
