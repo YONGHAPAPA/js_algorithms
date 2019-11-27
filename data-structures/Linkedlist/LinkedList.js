@@ -99,6 +99,7 @@ class LinkedList{
     */
 
     //2019-11-26
+    /*
     prepend(value){
         const newNode = new LinkedNode(value);
 
@@ -167,6 +168,88 @@ class LinkedList{
 
     toString(cb){
 
+    }
+    */
+
+    //2019.11.27
+    prepend(value){
+        const node = new LinkedNode(value);
+        if(!this.head){
+            this.head = node;
+            this.tail = node;
+            return this;
+        }
+
+        node.next = this.head;
+        this.head = node;
+        return this;
+    }
+
+    append(value){
+        const node = new LinkedNode(value);
+        if(!this.head){
+            this.head = node;
+            this.tail = node;
+            return this;
+        }
+        this.tail.next = node;
+        this.tail = node;
+        return this;
+    }
+
+    reverse(){
+        let currNode = this.head;
+        let revNode = null;
+        
+        while(currNode){
+            let nextNode = currNode.next;
+            currNode.next = revNode;
+            revNode = currNode;
+            currNode = nextNode;
+        }
+
+        this.tail = this.head;
+        this.head = revNode;
+        return this;
+    }
+
+    toArray(){
+        const nodes = new Array();
+        let currNode = this.head;
+        while(currNode){
+            nodes.push(currNode.value);
+            currNode = currNode.next;
+        }
+        return nodes;
+    }
+
+    toString(cb){
+        return this.toArray().map(item => 
+            item.toString()
+        ).toString();
+    }
+
+    find({value = undefined, cb = undefined}){
+
+        console.log('value > ' + value);
+
+        if(!this.head)
+            return;
+
+        let currNode = this.head;
+
+        while(currNode){
+            if(cb && cb(currNode.value)){
+                return currNode;
+            }
+
+            if(value === currNode.value){
+                return currNode;
+            }
+            currNode = currNode.next;
+        }
+
+        return;
     }
 }
 
