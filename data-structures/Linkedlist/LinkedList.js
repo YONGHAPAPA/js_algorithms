@@ -172,6 +172,7 @@ class LinkedList{
     */
 
     //2019.11.27
+    /*
     prepend(value){
         const node = new LinkedNode(value);
         if(!this.head){
@@ -251,6 +252,111 @@ class LinkedList{
 
         return;
     }
+    */
+
+
+    //2019.12.02
+    prepend(value){
+        const newNode = new LinkedNode(value);
+
+        if(!this.head)
+        {
+            this.head = newNode;
+            this.tail = newNode;
+            return this;
+        }
+
+        newNode.next = this.head;
+        this.head = newNode;
+        return this;
+    }
+
+    toArray(){
+        const nodeList = new Array();
+        let currNode = this.head;
+
+        while(currNode){
+            nodeList.push(currNode.value);
+            currNode = currNode.next;
+        }
+
+        return nodeList;
+    }
+
+    append(value){
+        const newNode = new LinkedNode(value);
+
+        if(!this.head){
+            this.head = newNode;
+            this.tail = newNode;
+            return this;
+        }
+
+        this.tail.next = newNode;
+        this.tail = newNode;
+        return this;
+    }
+
+    reverse(){
+        let currNode = this.head;
+        let revsNode = null;
+        let tempNode = null;
+
+        while(currNode){
+            tempNode = currNode.next;
+            
+            currNode.next = revsNode;
+            revsNode = currNode;
+
+            currNode = tempNode;
+        }
+
+        this.tail = this.head;
+        this.head = revsNode;
+        return this;
+    }
+
+
+    find({value=undefined, cb=undefined}){
+
+        //console.log(value);
+        //console.log(cb);
+
+        if(!this.head){
+            return null;
+        }
+
+        let currNode = this.head;
+
+        while(currNode){
+            if(cb && cb(currNode.value)){
+                return currNode;
+            }
+
+            if(value && this.compare(value, currNode.value) === 0){
+                return currNode;
+            }
+
+            currNode = currNode.next;
+        }
+
+        return null;
+    }
+
+    compare(a,b){
+        if(a > b){
+            return -1;
+        }
+
+        if(a < b){
+            return 1;
+        }
+
+        if(a === b){
+            return 0;
+        }
+    }
 }
+
 
 module.exports = LinkedList
