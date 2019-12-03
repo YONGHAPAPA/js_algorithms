@@ -35,9 +35,9 @@ console.log(findNode);
 */
 
 
-//2019.12.02
+//2019.12.02 - 2019.12.03
 for(i=0; i>=-5; i--){
-    list.prepend(i);
+    //list.prepend(i);
 }
 
 for(i=1; i<=5; i++){
@@ -47,8 +47,13 @@ for(i=1; i<=5; i++){
 //list.reverse();
 
 //console.log(list.toArray());
-let findNode = list.find({value:2});
-console.log(findNode);
+//let findNode = list.find({value:2});
+//console.log(findNode);
+
+console.log(list.toArray());
+delNode = list.delete(1);
+console.log(delNode);
+console.log(list.toArray());
 
 
 

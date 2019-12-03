@@ -255,7 +255,7 @@ class LinkedList{
     */
 
 
-    //2019.12.02
+    //2019.12.02 - 2019.12.03
     prepend(value){
         const newNode = new LinkedNode(value);
 
@@ -341,6 +341,36 @@ class LinkedList{
         }
 
         return null;
+    }
+
+    delete(value){
+
+        if(!this.head){
+            return null;
+        }
+        
+        let currNode = this.head;
+        let deleteNode = null;
+
+        if(this.head && this.compare(value, this.head.value) == 0){
+            deleteNode = this.head;
+            this.head = this.head.next;
+        }
+        
+        while(currNode.next){
+            if(this.compare(value, currNode.next.value) == 0){
+                deleteNode = currNode.next;
+                currNode.next = currNode.next.next;
+            } else {
+                currNode = currNode.next;
+            }
+        }
+
+        if(this.compare(value, this.tail.value) == 0){
+          this.tail = currNode;  
+        }
+
+        return deleteNode;
     }
 
     compare(a,b){
