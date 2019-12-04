@@ -50,10 +50,22 @@ for(i=1; i<=5; i++){
 //let findNode = list.find({value:2});
 //console.log(findNode);
 
+//console.log(list.toArray());
+delNode = list.delete(3);
+//console.log(delNode);
 console.log(list.toArray());
-delNode = list.delete(1);
-console.log(delNode);
-console.log(list.toArray());
+
+/*
+let a = {x:0, y:0}
+let x = {x:9, y:9}
+let b = a;
+b.x = 7;
+b = x;
+b.x = 1;
+
+console.log(a);
+console.log(b);
+*/
 
 
 

@@ -343,6 +343,8 @@ class LinkedList{
         return null;
     }
 
+    //2019.12.03
+    /*
     delete(value){
 
         if(!this.head){
@@ -372,6 +374,46 @@ class LinkedList{
 
         return deleteNode;
     }
+    */
+
+    //2019.12.04
+    delete(value){
+
+        let hNode, tNode, delNode;
+        let currNode = this.head;
+
+        while(currNode){
+
+            if(this.compare(currNode.value, value) === 0){
+
+                delNode = currNode;
+                if(currNode.next){
+                    currNode = currNode.next;
+                } else {
+                    break;
+                }
+            }
+
+            const node = new LinkedNode(currNode.value);
+
+            if(!hNode){
+                hNode = node;
+                tNode = node;
+            } else {
+                tNode.next = node;
+                tNode = node;
+            }
+
+            currNode = currNode.next;
+        }
+
+        this.head = hNode;
+        this.tail = tNode;
+        
+        return delNode;
+    }
+
+
 
     compare(a,b){
         if(a > b){
