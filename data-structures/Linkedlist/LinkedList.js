@@ -256,6 +256,7 @@ class LinkedList{
 
 
     //2019.12.02 - 2019.12.03
+    /*
     prepend(value){
         const newNode = new LinkedNode(value);
 
@@ -342,6 +343,7 @@ class LinkedList{
 
         return null;
     }
+    */
 
     //2019.12.03
     /*
@@ -377,6 +379,7 @@ class LinkedList{
     */
 
     //2019.12.04
+    /*
     delete(value){
 
         let hNode, tNode, delNode;
@@ -412,8 +415,7 @@ class LinkedList{
         
         return delNode;
     }
-
-
+    */
 
     compare(a,b){
         if(a > b){
@@ -427,6 +429,144 @@ class LinkedList{
         if(a === b){
             return 0;
         }
+    }
+
+    //2019.12.05
+    toArray(){
+        let currNode = this.head;
+        const result = new Array();
+
+        while(currNode){
+            result.push(currNode.value);
+            currNode = currNode.next;
+        }
+
+        return result;
+    }
+
+    prepend(value){
+
+        const nNode = new LinkedNode(value);
+
+        if(!this.head){
+            this.head = nNode;
+            this.tail = nNode;
+            return this;
+        }
+
+        nNode.next = this.head;
+        this.head = nNode;
+        return this;
+    }
+
+    append(value){
+        const nNode = new LinkedNode(value);
+
+        if(!this.head){
+            this.head = nNode;
+            this.tail = nNode;
+            return this;
+        }
+
+        this.tail.next = nNode; //this.head.next === nNode
+        this.tail = nNode;  //this.head.next === this.tail === nNode
+        return this
+    }
+
+    find(value){
+        let currNode = this.head;
+        let findNode;
+
+        while(currNode){
+            if(currNode && this.compare(currNode.value, value) === 0){
+                findNode = currNode;
+            }
+            currNode = currNode.next;
+        }
+
+        return findNode;
+    }
+
+    reverse(){
+
+        let currNode = this.head;
+        let tempNode, revsNode;
+
+        let idx = 0;
+        while(currNode){
+            tempNode = currNode.next;
+
+            currNode.next = revsNode;
+            revsNode = currNode;
+
+            currNode = tempNode;
+            idx++;
+        }
+
+        //console.log(revsNode);
+        this.tail = this.head;
+        this.head = revsNode;
+
+        return this;
+    }
+
+    delete(value){
+
+        let currNode = this.head;
+        let deleteNode;
+        let hNode, tNode, nNode;
+
+        while(currNode){
+
+            if(this.compare(currNode.value, value) === 0){
+                deleteNode = currNode;
+                currNode = currNode.next;
+            }
+
+            if(!currNode)
+                break;
+
+            nNode = new LinkedNode(currNode.value);
+
+            if(!hNode){
+                hNode = nNode;
+                tNode = nNode;
+            } else {
+                tNode.next = nNode;
+                tNode = nNode;
+            }
+
+            currNode = currNode.next;
+        }
+
+        if(deleteNode){
+            this.head = hNode;
+            this.tail = tNode;
+        }
+
+        return deleteNode;
+    }
+
+    deleteTail(){
+        let currNode = this.head;
+        let deletedTail;
+
+        while(currNode){
+
+            if(currNode.next){
+                if(!currNode.next.next){
+                    deletedTail = currNode.next;
+                    currNode.next = null;
+                    this.tail = currNode;
+                }
+            } 
+            currNode = currNode.next;
+        }
+
+        //console.log(this.head);
+        console.log(this.tail);
+
+        return deletedTail;
     }
 }
 
