@@ -37,11 +37,11 @@ console.log(findNode);
 
 //2019.12.02 - 2019.12.03
 for(i=0; i>=-5; i--){
-    list.prepend(i);
+    //list.prepend(i);
 }
 
 for(i=1; i<=5; i++){
-    list.append(i);
+    //list.append(i);
 }
 
 //console.log(list.find(3));
@@ -58,13 +58,13 @@ for(i=1; i<=5; i++){
 //list.delete(4);
 //list.delete(5);
 
-list.deleteTail();
+//list.deleteTail();
 //console.log(list.toArray());
 
-list.deleteTail();
+//list.deleteTail();
 //console.log(list.toArray());
 
-list.deleteTail();
+//list.deleteTail();
 //console.log(list.toArray());
 
 /*
@@ -79,6 +79,7 @@ console.log(a);
 console.log(b);
 */
 
+/*
 let a = {x:0, y : {x:0, y:{x:0, Y:null}}};
 let b = a;
 c = {x:0, y:0}
@@ -89,6 +90,22 @@ b = c;
 console.log(a);
 console.log(b);
 console.log(c);
+*/
+
+
+for(i=0; i>=-3; i--){
+    list.prepend(i);
+}
+
+for(i=1; i<=3; i++){
+    list.append(i);
+}
+
+console.log(list.toArray());
+
+list.reverse();
+console.log(list.toArray());
+
 
 
 

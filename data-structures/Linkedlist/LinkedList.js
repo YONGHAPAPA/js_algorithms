@@ -417,6 +417,7 @@ class LinkedList{
     }
     */
 
+    /*
     compare(a,b){
         if(a > b){
             return -1;
@@ -430,8 +431,10 @@ class LinkedList{
             return 0;
         }
     }
+    */
 
     //2019.12.05
+    /*
     toArray(){
         let currNode = this.head;
         const result = new Array();
@@ -552,7 +555,6 @@ class LinkedList{
         let deletedTail;
 
         while(currNode){
-
             if(currNode.next){
                 if(!currNode.next.next){
                     deletedTail = currNode.next;
@@ -567,6 +569,66 @@ class LinkedList{
         console.log(this.tail);
 
         return deletedTail;
+    }
+    */
+
+    //2019.12.09
+    prepend(value){
+        const nNode = new LinkedNode(value);
+
+        if(!this.head){
+            this.head = nNode;
+            this.tail = nNode;
+            return this;
+        }
+
+        nNode.next = this.head;
+        this.head = nNode;
+        return this;
+    }
+
+    toArray(){
+        const result = new Array();
+        let currNode = this.head;
+
+        while(currNode){
+            result.push(currNode.value);
+            currNode = currNode.next;
+        }
+
+        return result;
+    }
+
+    append(value){
+        const nNode = new LinkedNode(value);
+
+        if(!this.head){
+            this.head = nNode;
+            this.tail = nNode;
+            return this;
+        }
+
+        this.tail.next = nNode;
+        this.tail = nNode;
+        return this;
+    }
+
+    reverse(){
+
+        let currNode = this.head;
+        //let tempNode, reverseNode = null;
+        var tempNode, reverseNode;
+
+        while(currNode){
+            tempNode = currNode.next;
+            currNode.next = reverseNode;
+            reverseNode = currNode;;
+            currNode = tempNode;
+        }
+
+        this.tail = this.head;
+        this.head = reverseNode;
+        return this;
     }
 }
 
