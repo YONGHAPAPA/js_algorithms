@@ -572,7 +572,7 @@ class LinkedList{
     }
     */
 
-    //2019.12.09
+    //2019.12.09 - 2019.12.10
     prepend(value){
         const nNode = new LinkedNode(value);
 
@@ -629,6 +629,46 @@ class LinkedList{
         this.tail = this.head;
         this.head = reverseNode;
         return this;
+    }
+
+    compare(val1, val2){
+        
+        if(val1 > val2){
+            return 1;
+        }
+        
+        if(val1 === val2){
+            return 0;
+        }
+
+        if(val1 < val2){
+            return -1;
+        }
+    }
+
+    delete(value){
+        let currNode = this.head;
+        while(currNode){
+            if(this.compare(value, this.head.value) === 0){
+                this.head = currNode.next;
+                break;
+            }
+
+            if(currNode.next != null){
+                if(this.compare(value, currNode.next.value) === 0){
+
+                    if(currNode.next.next === null){
+                        currNode.next = null;
+                        this.tail = currNode;
+                    } else {
+                        currNode.next = currNode.next.next;
+                        deleteNode = currNode.next; 
+                    }
+                }
+            } 
+
+            currNode = currNode.next;
+        }
     }
 }
 

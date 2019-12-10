@@ -94,17 +94,22 @@ console.log(c);
 
 
 for(i=0; i>=-3; i--){
-    list.prepend(i);
+    //list.prepend(i);
 }
 
-for(i=1; i<=3; i++){
+for(i=1; i<=5; i++){
     list.append(i);
 }
 
-console.log(list.toArray());
+//console.log(list.toArray());
 
-list.reverse();
+
+list.delete(1);
+
+//list.reverse();
 console.log(list.toArray());
+console.log(list.head);
+console.log(list.tail);
 
 
 
