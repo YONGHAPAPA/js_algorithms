@@ -670,6 +670,25 @@ class LinkedList{
             currNode = currNode.next;
         }
     }
+
+    
+    deleteHead(){
+        let deleteNode = null;
+
+        if(!this.head){
+            return null;
+        }
+
+        if(this.head.next){
+            deleteNode = this.head;
+            this.head = this.head.next;
+        } else {
+            this.head = null;
+            this.tail = null;
+        }
+
+        return deleteNode;
+    }
 }
 
 

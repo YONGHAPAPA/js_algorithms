@@ -104,12 +104,14 @@ for(i=1; i<=5; i++){
 //console.log(list.toArray());
 
 
-list.delete(1);
-
+//list.delete(1);
 //list.reverse();
+
 console.log(list.toArray());
 console.log(list.head);
 console.log(list.tail);
+list.deleteHead();
+console.log(list.toArray());
 
 
 
