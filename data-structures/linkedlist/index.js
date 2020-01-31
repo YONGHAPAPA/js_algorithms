@@ -91,14 +91,14 @@ console.log(b);
 console.log(c);
 */
 
-<<<<<<< HEAD
+
 for (i = 0; i >= -3; i--) {
    //list.prepend(i);
 }
 
 for (i = 1; i <= 5; i++) {
    list.append(i);
-=======
+
 
 for(i=0; i>=-3; i--){
     list.prepend(i);
@@ -108,7 +108,7 @@ for(i=0; i>=-3; i--){
 
 for(i=1; i<=3; i++){
     list.append(i);
->>>>>>> 26879ea08940093c1239a77129d850317c2e8acb
+
 }
 
 
@@ -122,26 +122,6 @@ console.log(list.toArray());
 
 list.delete(-1);
 console.log(list.toArray());
-<<<<<<< HEAD
-=======
+
 console.log(list.tail);
 
-//console.log(list.toArray());
-//console.log(list.head);
-//console.log(list.tail);
-//list.deleteHead();
-//console.log(list.toArray());
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 26879ea08940093c1239a77129d850317c2e8acb

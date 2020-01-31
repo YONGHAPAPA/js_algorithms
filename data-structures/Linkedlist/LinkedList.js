@@ -1,17 +1,17 @@
-const LinkedNode = require('./LinkedNode');
+const LinkedNode = require("./LinkedNode");
 
-function compareVal(a, b){
-    return a - b;
+function compareVal(a, b) {
+   return a - b;
 }
 
-class LinkedList{
-    constructor(head, tail){
-        this.head = head;
-        this.tail = tail;
-    }
+class LinkedList {
+   constructor(head, tail) {
+      this.head = head;
+      this.tail = tail;
+   }
 
-    //#region 
-    /*
+   //#region
+   /*
     prepend(value){
         const newNode = new LinkedNode(value);
 
@@ -99,8 +99,8 @@ class LinkedList{
     }
     */
 
-    //2019-11-26
-    /*
+   //2019-11-26
+   /*
     prepend(value){
         const newNode = new LinkedNode(value);
 
@@ -172,8 +172,8 @@ class LinkedList{
     }
     */
 
-    //2019.11.27
-    /*
+   //2019.11.27
+   /*
     prepend(value){
         const node = new LinkedNode(value);
         if(!this.head){
@@ -255,9 +255,8 @@ class LinkedList{
     }
     */
 
-
-    //2019.12.02 - 2019.12.03
-    /*
+   //2019.12.02 - 2019.12.03
+   /*
     prepend(value){
         const newNode = new LinkedNode(value);
 
@@ -346,8 +345,8 @@ class LinkedList{
     }
     */
 
-    //2019.12.03
-    /*
+   //2019.12.03
+   /*
     delete(value){
 
         if(!this.head){
@@ -379,8 +378,8 @@ class LinkedList{
     }
     */
 
-    //2019.12.04
-    /*
+   //2019.12.04
+   /*
     delete(value){
 
         let hNode, tNode, delNode;
@@ -418,7 +417,7 @@ class LinkedList{
     }
     */
 
-    /*
+   /*
     compare(a,b){
         if(a > b){
             return -1;
@@ -434,8 +433,8 @@ class LinkedList{
     }
     */
 
-    //2019.12.05
-    /*
+   //2019.12.05
+   /*
     toArray(){
         let currNode = this.head;
         const result = new Array();
@@ -573,8 +572,8 @@ class LinkedList{
     }
     */
 
-    //2019.12.09 - 2019.12.10
-    /*
+   //2019.12.09 - 2019.12.10
+   /*
     prepend(value){
         const nNode = new LinkedNode(value);
 
@@ -694,127 +693,117 @@ class LinkedList{
     */
    //#endregion
 
+   //#region 2019.12.25
+   prepend(value) {
+      const newNode = new LinkedNode(value);
 
-    //#region 2019.12.25
-    prepend(value){
+      if (!this.head) {
+         this.head = newNode;
+         this.tail = newNode;
+         return this;
+      }
 
-        const newNode = new LinkedNode(value);
+      newNode.next = this.head;
+      this.head = newNode;
+      return this;
+   }
 
-        if(!this.head){
-            this.head = newNode;
-            this.tail = newNode;
-            return this;
-        }
+   append(value) {
+      const newNode = new LinkedNode(value);
 
-        newNode.next = this.head;
-        this.head = newNode;
-        return this;
-    }
+      if (!this.head) {
+         this.head = newNode;
+         this.tail = newNode;
+         return this;
+      }
 
-    append(value){
-        const newNode = new LinkedNode(value);
+      this.tail.next = newNode;
+      this.tail = newNode;
+      return this;
+   }
 
-        if(!this.head){
-            this.head = newNode;
-            this.tail = newNode;
-            return this;
-        }
+   toArray() {
+      const arrNodeList = new Array();
+      let currNode = this.head;
 
-        this.tail.next = newNode;
-        this.tail = newNode;
-        return this;
-    }
+      while (currNode) {
+         arrNodeList.push(currNode.value);
+         currNode = currNode.next;
+      }
 
-    toArray(){
+      return arrNodeList;
+   }
 
-        const arrNodeList = new Array();
-        let currNode = this.head;
+   reverse() {
+      let nextNode = null;
+      let rNodeList = null;
+      let currNode = this.head;
 
-        while(currNode){
-            arrNodeList.push(currNode.value);
-            currNode = currNode.next;
-        }
+      while (currNode) {
+         nextNode = currNode.next;
+         currNode.next = rNodeList;
+         //at this point, the head value equal to the tail value.
+         //console.log(this.head);
+         rNodeList = currNode;
+         currNode = nextNode;
+      }
 
-        return arrNodeList;
-    }
+      this.tail = this.head;
+      this.head = rNodeList;
 
-    reverse(){
+      return this;
+   }
 
-        let nextNode = null;
-        let rNodeList = null;
-        let currNode = this.head;
+   delete(value) {
+      let currNode = null;
+      let deleteNode = null;
 
-        while(currNode){
-            nextNode = currNode.next;
-            currNode.next = rNodeList;
-            //at this point, the head value equal to the tail value.
-            //console.log(this.head);
-            rNodeList = currNode;
-            currNode = nextNode;
-        }
+      currNode = this.head;
+      if (!this.head) return null;
 
-        this.tail = this.head;
-        this.head = rNodeList;
-        
-        return this;        
-    }
+      if (this.compare(value, this.head.value) === 0) {
+         deleteNode = this.head;
+         this.head = this.head.next;
+         return deleteNode;
+      }
 
-    delete(value){
+      while (currNode) {
+         if (
+            currNode.next &&
+            this.compare(value, currNode.next.value) === 0
+         ) {
+            deleteNode = currNode.next;
+            currNode.next = currNode.next.next;
+         }
 
-        let currNode = null;
-        let deleteNode = null;
+         if (!currNode.next) this.tail = currNode;
 
-        currNode = this.head;
-        if(!this.head) return null;
+         currNode = currNode.next;
+      }
 
-        if(this.compare(value, this.head.value) === 0){
-            deleteNode = this.head;
-            this.head = this.head.next;
-            return deleteNode;
-        }
+      return deleteNode;
+   }
 
-        while(currNode){
-            if(currNode.next && this.compare(value, currNode.next.value) === 0){
-                deleteNode = currNode.next;
-                currNode.next = currNode.next.next;
-            }
+   deleteHead() {}
 
-            if(!currNode.next) this.tail = currNode;
+   deleteTail() {}
 
-            currNode = currNode.next;
-        }
+   toString() {}
 
-        return deleteNode;
-    }
+   compare(val1, val2) {
+      if (val1 > val2) {
+         return 1;
+      }
 
-    deleteHead(){
+      if (val1 < val2) {
+         return 1;
+      }
 
-    }
-
-    deleteTail(){
-
-    }
-
-    toString(){
-
-    }
-
-    compare(val1, val2){
-        if(val1 > val2){
-            return 1;
-        }
- 
-        if(val1 < val2){
-            return 1;
-        }
-
-        if(val1 === val2){
-            return 0;
-        }
-    }
-    //#endregion
-
+      if (val1 === val2) {
+         return 0;
+      }
+   }
+   //#endregion
 }
 
-
-module.exports = LinkedList
+module.exports = LinkedList;
