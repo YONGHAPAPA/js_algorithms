@@ -91,7 +91,6 @@ console.log(b);
 console.log(c);
 */
 
-
 for (i = 0; i >= -3; i--) {
    //list.prepend(i);
 }
@@ -99,29 +98,13 @@ for (i = 0; i >= -3; i--) {
 for (i = 1; i <= 5; i++) {
    list.append(i);
 
+   for (i = 0; i >= -3; i--) {
+      list.prepend(i);
+   }
 
-for(i=0; i>=-3; i--){
-    list.prepend(i);
+   //console.log(list.toArray());
+
+   for (i = 1; i <= 3; i++) {
+      list.append(i);
+   }
 }
-
-//console.log(list.toArray());
-
-for(i=1; i<=3; i++){
-    list.append(i);
-
-}
-
-
-
-//console.log(list.toArray());
-
-//list.delete(1);
-//list.reverse();
-
-console.log(list.toArray());
-
-list.delete(-1);
-console.log(list.toArray());
-
-console.log(list.tail);
-
