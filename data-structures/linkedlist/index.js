@@ -1,15 +1,15 @@
-const LinkedNode = require('./LinkedNode');
-const LinkedList = require('./LinkedList');
+const LinkedNode = require("./LinkedNode");
+const LinkedList = require("./LinkedList");
 const list = new LinkedList();
 
 //prepend node
-for(let i=0; i>=-5; i--){
-    //list.prepend(i);
+for (let i = 0; i >= -5; i--) {
+   //list.prepend(i);
 }
 
 //append node
-for(let i=1; i<=5; i++){
-    //list.append(i);
+for (let i = 1; i <= 5; i++) {
+   //list.append(i);
 }
 
 //console.log(list.toArray());
@@ -34,14 +34,13 @@ let findNode = list.find({value:0, cb:function(val){
 console.log(findNode);
 */
 
-
 //2019.12.02 - 2019.12.03
-for(i=0; i>=-5; i--){
-    //list.prepend(i);
+for (i = 0; i >= -5; i--) {
+   //list.prepend(i);
 }
 
-for(i=1; i<=5; i++){
-    //list.append(i);
+for (i = 1; i <= 5; i++) {
+   //list.append(i);
 }
 
 //console.log(list.find(3));
@@ -92,17 +91,15 @@ console.log(b);
 console.log(c);
 */
 
-
-for(i=0; i>=-3; i--){
-    //list.prepend(i);
+for (i = 0; i >= -3; i--) {
+   //list.prepend(i);
 }
 
-for(i=1; i<=5; i++){
-    list.append(i);
+for (i = 1; i <= 5; i++) {
+   list.append(i);
 }
 
 //console.log(list.toArray());
-
 
 //list.delete(1);
 //list.reverse();
@@ -112,16 +109,3 @@ console.log(list.head);
 console.log(list.tail);
 list.deleteHead();
 console.log(list.toArray());
-
-
-
-
-
-
-
-
-
-
-
-
-
